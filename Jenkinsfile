@@ -15,7 +15,7 @@ agent any
             steps {
                 echo 'Building Docker..'
                 sh 'sudo docker build -t ramdocker/javaapp .'
-                sh 'sudo docker run -p -d 8090:8080 ramdocker/javaapp'
+                sh 'sudo docker run -d -p 8090:8080 ramdocker/javaapp'
                     }
                 }
               }
