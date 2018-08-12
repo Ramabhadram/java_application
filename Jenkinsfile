@@ -6,7 +6,7 @@ agent any
         stage('Build Code') {
             steps {
                 echo 'Building..'
-                 sh 'mvn package'
+                sh 'mvn package'
                   }
                        }
         
@@ -16,8 +16,9 @@ agent any
         
         stage('Build Docker Image') {
             steps {
-                 sh 'sudo docker build -t ramdocker/javaapp .'
-                 sh 'sudo docker run -p 8090:8080 -d ramdocker/javaapp'
+                echo 'Building Docker..'
+                sh 'sudo docker build -t ramdocker/javaapp .'
+                sh 'sudo docker run -p 8090:8080 -d ramdocker/javaapp'
                     }
                 }
                 
