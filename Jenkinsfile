@@ -10,10 +10,7 @@ agent any
                   }
                        }
         
-           }
-        
-        
-        
+         
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker..'
@@ -21,5 +18,6 @@ agent any
                 sh 'sudo docker run -p 8090:8080 -d ramdocker/javaapp'
                     }
                 }
+              }
                 
 }
