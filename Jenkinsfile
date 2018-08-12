@@ -1,47 +1,24 @@
 pipeline {
     
 agent any
-    
-    
-  
+
     stages {
-        
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-    }
-        stage('Build') {
+        stage('Build Code') {
             steps {
                 echo 'Building..'
                  sh 'mvn package'
-            }
-        }
+                  }
+                       }
+        
+           }
         
         
-        stage('Decesion making deployment') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
+        
+        stage('Build Docker Image') {
+            steps {
+                 sh 'sudo docker build -t ramdocker/javaapp .'
+                 sh 'sudo docker run -p 8090:8080 -d ramdocker/javaapp'
+                    }
+                }
                 
-            }
-            steps {
-                echo "Hello, nice to meet you."
-            }
-        }
-        
-        
-        
-        stage('Deploy') {
-            steps {
-                sh 'sudo apt update -y'
-                sh 'sudo apt install tomcat8 -y'
-                sh 'sudo apt install tomcat8-admin -y'
-                sh 'sudo apt install tomcat8-user -y'
-                sh 'sudo cp /root/grants.war /var/lib/tomcat8/webapps/'
-                sh 'sudo cp /root/java_application/tomcat-users.xml /etc/tomcat8/'
-                sh 'sudo service tomcat8 restart'
-            }
-        }
-    }
 }
