@@ -1,6 +1,6 @@
 pipeline {
     
-agent { label 'docker' }
+agent any
     
     
   
@@ -8,7 +8,7 @@ agent { label 'docker' }
         
         stage('Checkout') {
             steps {
-        checkout scm
+                checkout scm
             }
     }
         stage('Build') {
