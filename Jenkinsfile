@@ -23,8 +23,8 @@ pipeline {
                 sh 'sudo apt install tomcat8 -y'
                 sh 'sudo apt install tomcat8-admin -y'
                 sh 'sudo apt install tomcat8-user -y'
-                sh 'sudo cp /home/ubuntu/workspace/app_deploy/target/grants.war /var/lib/tomcat8/webapps/'
-                sh 'sudo cp /home/ubuntu/workspace/app_deploy/tomcat-users.xml /etc/tomcat8/'
+                sh 'sudo cp /var/lib/jenkins/workspace/Java_applicaion_docker/target/grants.war /var/lib/tomcat8/webapps/'
+                sh 'sudo cp /var/lib/jenkins/workspace/Java_applicaion_docker/tomcat-users.xml /etc/tomcat8/'
                 sh 'sudo service tomcat8 restart'
 
             }
